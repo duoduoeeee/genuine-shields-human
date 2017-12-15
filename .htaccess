@@ -1,0 +1,5 @@
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+RewriteRule ^(.*)/(.*)/(.*)/(.*)$ call.php?service=$1&restype=$2&resid=$3&action=$4

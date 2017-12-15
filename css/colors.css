@@ -1,0 +1,52 @@
+.yousa {
+  color: #cd4152;
+
+}
+
+.yanhe {
+  background-color: #00ffcc;
+
+}
+
+.tianyi {
+  color: #66ccff;
+
+}
+
+.yanhe-bright {
+  color: #f2445b;
+
+}
+
+.yanhe-emp-1 {
+  color: #e6526f;
+
+}
+
+.yanhe-emp-2 {
+  color: #ec6a7c;
+
+}
+
+.yanhe-emp-3 {
+  color: #f1929b;
+
+}
+
+.yanhe-emp-4 {
+  color: #f37d9b;
+
+}
+
+.links {
+  color: #0099ff;
+}
+
+div>.yousa, div>.yanhe, div>.yanhe-bright, div>.yanhe-emp-1, div>.yanhe-emp-2, div>.yanhe-emp-3, div>.yanhe-emp-4 {
+  margin-bottom: 1em;
+  border-radius: 3px;
+  border-width: 1.5px;
+  padding: 3px 3px;
+  border: 1.5px solid;
+  max-width: 640px;
+}
