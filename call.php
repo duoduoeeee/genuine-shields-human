@@ -106,11 +106,11 @@ function parseBilibiliAPIDocument($resid, $action) {
   }
 
 function parseNeteaseAPIDocument($restype, $resid, $action) {
-  if ($restype = 'artist') {
+  if ($restype === 'artist') {
     $neRequest = 'https://napi.duoee.cn/?type=artist&id=' . $resid . '&limit=0';
     $neRawDocument = file_get_contents($neRequest);
     $arrayNeRawDocument = json_decode($neRawDocument);
-    if ($action = 'name') {
+    if ($action === 'name') {
       $subject = '网易云音乐';
       $status = $arrayNeRawDocument -> artist -> name;
       $color_name = 'netease_red';
@@ -131,20 +131,22 @@ function parseNeteaseAPIDocument($restype, $resid, $action) {
       $status = '参数不正确。';
       }
     }
-  else if ($restype = 'song') {
+  else if ($restype === 'song') {
     $neRawDocument = file_get_contents('https://napi.duoee.cn/?type=song&id=' . $resid . '&limit=0');
     $arrayNeRawDocument = json_decode($neRawDocument);
-    if ($action = 'name') {
+    if ($action === 'name') {
       $subject = '网易云音乐';
-      $status = $arrayNeRawDocument -> songs[0] -> name;
+      $middleVar = $arrayNeRawDocument -> songs[0];
+      $status = $middleVar -> name;
       $color_name = 'netease_red';
       }
-    else if ($action = 'albumname') {
+    else if ($action === 'albumname') {
       $subject = '专辑';
-      $status = $arrayNeRawDocument -> songs[0] -> album;
+      $middleVar = $arrayNeRawDocument -> songs[0];
+      $status = $middleVar -> album;
       $color_name = 'netease_red';
       }
-    else if ($action = 'artists') {
+    else if ($action === 'artists') {
       $middleVar = $arrayNeRawDocument -> songs[0];
       foreach ($middleVar -> artists as $artistArray) {
         $artistString = $artistArray -> name;
@@ -163,7 +165,7 @@ function parseNeteaseAPIDocument($restype, $resid, $action) {
       $status = '参数不正确。';
         }
       }
-    else if ($restype = 'album') {
+    else if ($restype === 'album') {
       $neRequest = 'https://napi.duoee.cn/?type=album&id=' . $resid . '&limit=0';
       $neRawDocument = file_get_contents($neRequest);
       $arrayNeRawDocument = json_decode($neRawDocument);
@@ -172,22 +174,22 @@ function parseNeteaseAPIDocument($restype, $resid, $action) {
         $status = $arrayNeRawDocument -> album -> artist -> name;
         $color_name = 'netease_red';
         }
-      else if ($action = 'songs') {
+      else if ($action === 'songs') {
         $subject = '歌曲';
         $status = $arrayNeRawDocument -> album -> size;
         $color_name = 'netease_red';
         }
-      else if ($action = 'comments') {
+      else if ($action === 'comments') {
         $subject = '评论';
         $status = $arrayNeRawDocument -> album -> info -> commentCount;
         $color_name = 'netease_red';
         }
-      else if ($action = 'likes') {
+      else if ($action === 'likes') {
         $subject = '收藏';
         $status = $arrayNeRawDocument -> album -> info -> likedCount;
         $color_name = 'netease_red';
         }
-      else if ($action = 'shares') {
+      else if ($action === 'shares') {
         $subject = '分享';
         $status = $arrayNeRawDocument -> album -> info -> shareCount;
         $color_name = 'netease_red';
@@ -198,7 +200,7 @@ function parseNeteaseAPIDocument($restype, $resid, $action) {
         $color_name = 'lightgrey';
         }
       }
-    else if ($restype = 'playlist') {
+    else if ($restype === 'playlist') {
       $neRequest = 'https://napi.duoee.cn/?type=playlist&id=' . $resid . '&limit=0';
       $neRawDocument = file_get_contents($neRequest);
       $arrayNeRawDocument = json_decode($neRawDocument);
@@ -207,22 +209,22 @@ function parseNeteaseAPIDocument($restype, $resid, $action) {
         $status = $arrayNeRawDocument -> result -> name;
         $color_name = 'netease_red';
       }
-      else if ($action = 'songs') {
+      else if ($action === 'songs') {
         $subject = '歌曲';
         $status = $arrayNeRawDocument -> result -> trackCount;
         $color_name = 'netease_red';
         }
-      else if ($action = 'comments') {
+      else if ($action === 'comments') {
         $subject = '评论';
         $status = $arrayNeRawDocument -> result -> commentCount;
         $color_name = 'netease_red';
         }
-      else if ($action = 'likes') {
+      else if ($action === 'likes') {
         $subject = '收藏';
         $status = $arrayNeRawDocument -> result -> likedCount;
         $color_name = 'netease_red';
         }
-      else if ($action = 'shares') {
+      else if ($action === 'shares') {
         $subject = '分享';
         $status = $arrayNeRawDocument -> result -> shareCount;
         $color_name = 'netease_red';
