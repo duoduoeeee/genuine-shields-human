@@ -169,7 +169,7 @@ function parseNeteaseAPIDocument($restype, $resid, $action) {
       $neRequest = 'https://napi.duoee.cn/?type=album&id=' . $resid . '&limit=0';
       $neRawDocument = file_get_contents($neRequest);
       $arrayNeRawDocument = json_decode($neRawDocument);
-      if ($action = 'artist') {
+      if ($action === 'artist') {
         $subject = '艺术家';
         $status = $arrayNeRawDocument -> album -> artist -> name;
         $color_name = 'netease_red';
